@@ -1,14 +1,17 @@
 const Cliente = require('../models/Cliente')
 
 module.exports = {
-    //Listando todos os usuários
+
+    //LISTANDO TODOS OS CLIENTES
+
     async get (req, res){
         const clientes = await Cliente.findAll()
 
         return res.json(clientes)
     },
 
-    //Inserindo um usuário
+    //INSERINDO UM CLIENTE
+
     async post (req, res){
         const { nome, email } = req.body
 
@@ -17,7 +20,8 @@ module.exports = {
         return res.json(cliente)
     },
 
-    //Deletando um usuário
+    //DELETANDO UM CLIENTE
+
     async delete (req, res){
         await Cliente.destroy({
             where: { id: req.params.id }
@@ -26,7 +30,8 @@ module.exports = {
         return res.json({ message: 'Deletado com sucesso'})
     },
 
-    //Atualizando nome e email do usuário
+    //ATUALIZANDO NOME E EMAIL DO CLIENTE
+    
     async put (req, res){
         const { nome, email } = req.body
 

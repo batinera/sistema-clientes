@@ -9,6 +9,11 @@ class Cliente extends Model {
             sequelize
         })
     }
+
+    static associate(models) {
+        this.belongsToMany(models.Assinatura, { foreignKey: 'clientes_id', 
+        through: 'assinaturas_clientes', as: 'assinaturas' })
+    }
 }
 
 module.exports = Cliente
